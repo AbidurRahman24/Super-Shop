@@ -32,7 +32,7 @@ function App() {
             <Route path='/login'>
               <Login></Login>
             </Route>
-            <PrivateRoute path="/checkout">
+            <PrivateRoute path="/product/:id">
               <Checkout></Checkout>
             </PrivateRoute>
             <Route exact path='*'>

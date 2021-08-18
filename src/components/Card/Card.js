@@ -2,23 +2,24 @@ import React from 'react';
 import './Card.css'
 
 const Card = (props) => {
-    console.log(props);
+    const {id, name, email} = props.products
+    
     return (
         <div>
-            <div className='card-header'>
+            <div >
                     <div class="card-deck">
                         <div class="card">
                             <ima class="card-img-top" src="..." alt="Card image cap" />
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <h5 class="card-title">{name}</h5>
+                                <p class="card-text">{email}</p>
                             </div>
                             <div class="card-footer card-footer-gird">
                                 <div >
-                                    <p class="card-link">$250</p>
+                                    <p class="card-link">{id}</p>
                                 </div>
                                 <div>
-                                <button onClick={()=> props.handleClick(props.product)}>BUY NOW</button>
+                                <button onClick={()=> props.handleClick(id)}>BUY NOW</button>
                                 </div>
                             </div>
                         </div>
