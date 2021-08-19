@@ -12,12 +12,13 @@ const Home = () => {
     const handleClick = (id) => {
         const url = `product/${id}`
         history.push(url)
-        console.log('clicked', id);
+        // console.log('clicked',id);
     }
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => {
+                // console.log(data);
             setProducts(data)
             })
     }, [])

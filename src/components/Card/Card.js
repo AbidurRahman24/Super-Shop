@@ -2,7 +2,8 @@ import React from 'react';
 import './Card.css'
 
 const Card = (props) => {
-    const {id, name, email} = props.products
+    
+    const {_id, name, wigth, price} = props.products
     
     return (
         <div>
@@ -11,15 +12,16 @@ const Card = (props) => {
                         <div class="card">
                             <ima class="card-img-top" src="..." alt="Card image cap" />
                             <div class="card-body">
+                                <p> {_id}</p>
                                 <h5 class="card-title">{name}</h5>
-                                <p class="card-text">{email}</p>
+                                <p class="card-text">{wigth}</p>
                             </div>
                             <div class="card-footer card-footer-gird">
                                 <div >
-                                    <p class="card-link">{id}</p>
+                                    <h3 class="card-link">$ {price}</h3>
                                 </div>
                                 <div>
-                                <button onClick={()=> props.handleClick(id)}>BUY NOW</button>
+                                <button onClick={()=> props.handleClick(_id)}>BUY NOW</button>
                                 </div>
                             </div>
                         </div>
