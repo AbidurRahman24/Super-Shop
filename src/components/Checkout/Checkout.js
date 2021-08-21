@@ -5,10 +5,11 @@ import { useParams } from 'react-router-dom';
 
 const Checkout = () => {
     const {id} = useParams()
-    console.log(id);
+    // console.log(id);
     const [checkout, setCheckout] = useState({})
     useEffect(()=>{
-        fetch('http://localhost:5000/product/'+ id)
+        const URL = `http://localhost:5000/product/${id}`
+        fetch(URL)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -16,9 +17,27 @@ const Checkout = () => {
         })
     },[id])
     return (
-        <div>
-            <h2>This is checkout from: {id}</h2>
-            <h1>Name:{checkout.name}</h1>
+        <div className='container p-5 '>
+          <h2 className='py-5' >Cart</h2>
+            <table class="table table-striped ">
+  <thead>
+    <tr>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Subtotal</th>
+      
+    <hr />
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{checkout.name}</th>
+      <td>1</td>
+      <td>{checkout.price}</td>
+    </tr>
+    
+  </tbody>
+</table>
         </div>
     );
 };

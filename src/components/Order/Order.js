@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import VerticalMenu from './VerticalMenu/VerticalMenu';
 
 
 const Order = () => {
     const [imageURL, setIMageURL] = useState({});
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
+    // imageData block me, so i can't upload any image for url 
     // const handleImageUpload = event => {
     //     const imageData = new FormData();
     //     imageData.set('key', '04d43574beb63f8acb2043f8ac41cd03');
@@ -51,16 +52,29 @@ const Order = () => {
 
     return (
         <div>
-            <div className="container">
-                <div className="row w-50 ">
+            <div className="">
+                <div className="row  p-5">
+                    <div className="col-md-4">
+                        <VerticalMenu/>
+                    </div>
+                    <div className="col-md-8">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <input defaultValue="test" className='form-control' {...register("name")} />
-                        <input defaultValue="wight" {...register("wigth")} />
-                        <input {...register("price", { required: true })} />
+                        <div className='m-3'>
+                        <label>Product Name</label>
+                        <input defaultValue="Product Name" className='form-control' {...register("name")} />
+                        </div>
+                        <div className='m-3'>
+                        <label >Wight</label>
+                        <input defaultValue="wigth" className='form-control' {...register("wigth")} />
+                        </div>
+                        <div className='m-3'>
+                        <label>Price</label>
+                        <input defaultValue="price" {...register("price",  { required: true })} className='form-control' />
                         {errors.price && <span>This field is required</span>}
-
-                        <input type="submit" />
+                        </div>
+                        <input className='m-3' type="submit" />
                     </form>
+                    </div>
                 </div>
             </div>
         </div>

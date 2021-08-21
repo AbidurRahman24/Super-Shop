@@ -8,8 +8,11 @@ import Search from './Search/Search';
 const Home = () => {
 
     const [products, setProducts] = useState([]);
+    const [card, setCard] = useState([])
     const history = useHistory()
     const handleClick = (id) => {
+        const newCard = [...card, id]
+        setCard(newCard)
         const url = `product/${id}`
         history.push(url)
         // console.log('clicked',id);
@@ -26,7 +29,7 @@ const Home = () => {
         <div className='container'>
             <div className="row">
                 <Search></Search>
-
+                <p>{card.length}</p>
                 <div className='card-header'>
                 {
                     products.map(products => <Card 
