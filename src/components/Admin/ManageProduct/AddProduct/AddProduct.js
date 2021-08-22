@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import VerticalMenu from './VerticalMenu/VerticalMenu';
+import VerticalMenu from '../../VerticalMenu/VerticalMenu';
 
-
-const Order = () => {
+const AddProduct = () => {
     const [imageURL, setIMageURL] = useState({});
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     // imageData block me, so i can't upload any image for url 
@@ -50,10 +49,11 @@ const Order = () => {
             });
             window.location.reload(false);
     };
+    
 
     return (
         <div>
-            <div className="">
+              <div className="">
                 <div className="row  p-5">
                     <div className="col-md-4 h-100" style={{background:'black'}}>
                         <VerticalMenu/>
@@ -82,4 +82,4 @@ const Order = () => {
     );
 };
 
-export default Order;
+export default AddProduct;

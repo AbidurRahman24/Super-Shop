@@ -21,7 +21,7 @@ const Card = (props) => {
                                     <h3 class="card-link">$ {price}</h3>
                                 </div>
                                 <div>
-                                <button onClick={()=> props.handleClick(_id)}>BUY NOW</button>
+                                <button type="button" class="btn btn-primary" onClick={()=> props.handleClick(_id)}>BUY NOW</button>
                                 </div>
                             </div>
                         </div>
