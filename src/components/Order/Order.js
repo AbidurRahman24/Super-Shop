@@ -33,7 +33,7 @@ const Order = () => {
             wigth: data.wigth,
             price: data.price
         };
-        console.log(eventData);
+        // console.log(eventData);
         fetch('http://localhost:5000/addProduct', {
             method: 'POST', // or 'PUT'
             headers: {
@@ -48,31 +48,32 @@ const Order = () => {
             .catch((error) => {
                 console.error('Error:', error);
             });
+            window.location.reload(false);
     };
 
     return (
         <div>
             <div className="">
                 <div className="row  p-5">
-                    <div className="col-md-4">
+                    <div className="col-md-4 h-100" style={{background:'black'}}>
                         <VerticalMenu/>
                     </div>
                     <div className="col-md-8">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className='m-3'>
                         <label>Product Name</label>
-                        <input defaultValue="Product Name" className='form-control' {...register("name")} />
+                        <input className='form-control' {...register("name")} />
                         </div>
                         <div className='m-3'>
                         <label >Wight</label>
-                        <input defaultValue="wigth" className='form-control' {...register("wigth")} />
+                        <input className='form-control' {...register("wigth")} />
                         </div>
                         <div className='m-3'>
                         <label>Price</label>
-                        <input defaultValue="price" {...register("price",  { required: true })} className='form-control' />
+                        <input {...register("price",  { required: true })} className='form-control' />
                         {errors.price && <span>This field is required</span>}
                         </div>
-                        <input className='m-3' type="submit" />
+                        <input  className='m-3' type="submit" />
                     </form>
                     </div>
                 </div>
