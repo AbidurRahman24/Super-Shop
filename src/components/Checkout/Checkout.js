@@ -12,7 +12,7 @@ const Checkout = () => {
   // console.log(id);
   const [checkout, setCheckout] = useState({})
   useEffect(() => {
-    const URL = `http://localhost:5000/product/${id}`
+    const URL = `https://hidden-thicket-93837.herokuapp.com/product/${id}`
     fetch(URL)
       .then(res => res.json())
       .then(data => {
@@ -23,7 +23,7 @@ const Checkout = () => {
   const handleSendDatabase = () => {
     const orderDetails = { ...loggedInUser, ProductName: checkout.name, ProductPrice: checkout.price, OrderTime: new Date() }
 
-    fetch('http://localhost:5000/addOrders', {
+    fetch('https://hidden-thicket-93837.herokuapp.com/addOrders', {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const Checkout = () => {
 
   }
 //   useEffect(() => {
-//     fetch('http://localhost:5000/order')
+//     fetch('https://hidden-thicket-93837.herokuapp.com/order')
 //         .then(res => res.json())
 //         .then(data => {
 //             // console.log(data);

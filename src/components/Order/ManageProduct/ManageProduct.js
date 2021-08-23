@@ -7,7 +7,7 @@ import ManageInventory from './ManageInventory/ManageInventory';
 const ManageProduct = () => {
     const [manage, setManage] = useState([])
     useEffect(() => {
-        const url = 'http://localhost:5000/products'
+        const url = 'https://hidden-thicket-93837.herokuapp.com/products'
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -16,7 +16,7 @@ const ManageProduct = () => {
             })
     }, [])
     const handleDelete = id => {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://hidden-thicket-93837.herokuapp.com/delete/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

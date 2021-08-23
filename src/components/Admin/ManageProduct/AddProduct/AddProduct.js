@@ -33,7 +33,7 @@ const AddProduct = () => {
             price: data.price
         };
         // console.log(eventData);
-        fetch('http://localhost:5000/addProduct', {
+        fetch('https://hidden-thicket-93837.herokuapp.com/addProduct', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
