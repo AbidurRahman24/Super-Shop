@@ -1,45 +1,80 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 const Checkout = () => {
-    const {id} = useParams()
-    // console.log(id);
-    const [checkout, setCheckout] = useState({})
-    useEffect(()=>{
-        const URL = `http://localhost:5000/product/${id}`
-        fetch(URL)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            setCheckout(data)
-        })
-    },[id])
-    return (
-        <div className='container p-5 '>
-          <h2 className='py-5' >Cart</h2>
-            <table class="table table-striped ">
-  <thead>
-    <tr>
-      <th scope="col">Product</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Subtotal</th>
-      
-    <hr />
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">{checkout.name}</th>
-      <td>1</td>
-      <td>{checkout.price}</td>
-    </tr>
-    
-  </tbody>
-</table>
-        </div>
-    );
+  const { id } = useParams()
+  // const [orderData, setOrderData] = useState([])
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+  // console.log(id);
+  const [checkout, setCheckout] = useState({})
+  useEffect(() => {
+    const URL = `http://localhost:5000/product/${id}`
+    fetch(URL)
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data);
+        setCheckout(data)
+      })
+  }, [id])
+  const handleSendDatabase = () => {
+    const orderDetails = { ...loggedInUser, ProductName: checkout.name, ProductPrice: checkout.price, OrderTime: new Date() }
+
+    fetch('http://localhost:5000/addOrders', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orderDetails),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data) {
+          alert('Your order successfully submited')
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
+  }
+//   useEffect(() => {
+//     fetch('http://localhost:5000/order')
+//         .then(res => res.json())
+//         .then(data => {
+//             // console.log(data);
+//         setOrderData(data)
+//         })
+// }, [])
+  return (
+    <div className='container p-5 '>
+      <h2 className='py-5' >Cart</h2>
+      <table class="table table-striped ">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Subtotal</th>
+
+            <hr />
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{checkout.name}</th>
+            <td>1</td>
+            <td>{checkout.price}</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <button onClick={handleSendDatabase}>Send Database</button>
+     
+    </div>
+  );
 };
 
 export default Checkout;

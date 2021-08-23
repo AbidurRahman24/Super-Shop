@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { UserContext } from '../../App';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -12,11 +15,11 @@ const Header = () => {
                         <Nav className="me-auto">
                         </Nav>
                         <Nav>
-                            <Nav.Link href="/home">Home</Nav.Link>
-                            <Nav.Link href="/order">Order</Nav.Link>
-                            <Nav.Link href="/admin">Admin</Nav.Link>
-                            <Nav.Link href="/deals">Deals</Nav.Link>
-                            <Nav.Link href="/login">LogIn</Nav.Link>
+                            <Link to="/home" >Home</Link>
+                            <Link to="/order">Order</Link>
+                            <Link to="/admin">Admin</Link>
+                            <Link to="/deals">Deals</Link>
+                            <Link onClick={() => setLoggedInUser({})} to="/login">LogIn</Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
