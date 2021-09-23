@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useForm } from "react-hook-form";
-import VerticalMenu from '../../VerticalMenu/VerticalMenu';
+import VerticalMenu from '../../../Order/VerticalMenu/VerticalMenu';
 
 const AddProduct = () => {
-    const [imageURL, setIMageURL] = useState({});
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [info, setInfo] = useState({})
+    const [file, setFile] = useState(null)
+   
     // imageData block me, so i can't upload any image for url 
     // const handleImageUpload = event => {
     //     const imageData = new FormData();
@@ -23,58 +23,64 @@ const AddProduct = () => {
 
     //           }
 
+    const handleBlur = e => {
+        const newInfo = { ...info };
+        newInfo[e.target.name] = e.target.value;
+        setInfo(newInfo);
+    }
+    const handleFileChange = (e) => {
+        const newFile = e.target.files[0]
+        setFile(newFile)
+    }
+    const onSubmit = () => {
+        const formData = new FormData()
+        formData.append('file', file);
+        formData.append('name', info.name);
+        formData.append('wight', info.wight);
+        formData.append('price', info.price);
 
-
-    const onSubmit = data => {
-
-        const eventData = {
-            name: data.name,
-            wigth: data.wigth,
-            price: data.price
-        };
-        // console.log(eventData);
         fetch('https://hidden-thicket-93837.herokuapp.com/addProduct', {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(eventData),
+            method: 'POST',
+            body: formData
         })
-            .then(res => res.json())
+            .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
+                console.log(data)
             })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+            .catch(error => {
+                console.error(error)
+            })
             window.location.reload(false);
-    };
+    }
     
 
     return (
         <div>
               <div className="">
                 <div className="row  p-5">
-                    <div className="col-md-4 h-100" style={{background:'black'}}>
-                        <VerticalMenu/>
+                    <div className="col-md-4 h-100vh" style={{background:'black'}}>
+                        <VerticalMenu></VerticalMenu>
                     </div>
                     <div className="col-md-8">
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className='m-3'>
-                        <label>Product Name</label>
-                        <input className='form-control' {...register("name")} />
-                        </div>
-                        <div className='m-3'>
-                        <label >Wight</label>
-                        <input className='form-control' {...register("wigth")} />
-                        </div>
-                        <div className='m-3'>
-                        <label>Price</label>
-                        <input {...register("price",  { required: true })} className='form-control' />
-                        {errors.price && <span>This field is required</span>}
-                        </div>
-                        <input  className='m-3' type="submit" />
-                    </form>
+                    <form onSubmit={onSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Product name</label>
+                        <input onBlur={handleBlur} type="text" className="form-control" name="name" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputPassword1">Wight</label>
+                        <input onBlur={handleBlur} type="text" className="form-control" name="wight" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputPassword1">Price</label>
+                        <input onBlur={handleBlur} type="text" className="form-control" name="Price" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputPassword1">Upload a image</label>
+                        <input onChange={handleFileChange} type="file" className="form-control" id="exampleInputPassword1"/>
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
                     </div>
                 </div>
             </div>

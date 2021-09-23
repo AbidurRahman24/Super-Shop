@@ -29,7 +29,6 @@ const Home = () => {
         <div className='container'>
             <div className="row">
                 <Search></Search>
-                <p>{card.length}</p>
                 <div className='card-header'>
                 {
                     products.map(products => <Card 

@@ -11,7 +11,7 @@ import { createContext, useState } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Checkout from './components/Checkout/Checkout';
 import ManageProduct from './components/Order/ManageProduct/ManageProduct';
-import AddProduct from './components/Order/ManageProduct/AddProduct/AddProduct';
+import AddProduct from './components/Admin/ManageProduct/AddProduct/AddProduct';
 
 export const UserContext = createContext();
 
