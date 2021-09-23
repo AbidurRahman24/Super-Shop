@@ -10,7 +10,7 @@ const Card = ({products, handleClick}) => {
                         <img className="img-fluid mb-3" src={`data:image/png;base64,${products.image.img}`} alt=""/>
                             <div class="card-body">
                                 <h5 class="card-title">{products.name}</h5>
-                                <p class="card-text">{products.wigth}</p>
+                                <p class="card-text">{products.wight}</p>
                             </div>
                             <div class="card-footer card-footer-gird">
                                 <div >
