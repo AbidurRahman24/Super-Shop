@@ -10,9 +10,8 @@ const Card = (props) => {
             <div >
                     <div class="card-deck">
                         <div class="card">
-                            <ima class="card-img-top" src="..." alt="Card image cap" />
+                        <img className="img-fluid mb-3" src={`data:image/png;base64,${props.products.image.img}`} alt=""/>
                             <div class="card-body">
-                                <p> {_id}</p>
                                 <h5 class="card-title">{name}</h5>
                                 <p class="card-text">{wigth}</p>
                             </div>

@@ -20,7 +20,10 @@ const ManageProduct = () => {
             method: 'DELETE',
         })
             .then(res => res.json())
-            .then(result => console.log(result))
+            .then(result => {
+                console.log(result);
+                window.location.reload(false);
+            })
     }
     return (
         <div>

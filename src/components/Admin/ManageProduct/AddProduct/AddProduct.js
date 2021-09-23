@@ -73,7 +73,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputPassword1">Price</label>
-                        <input onBlur={handleBlur} type="text" className="form-control" name="Price" />
+                        <input onBlur={handleBlur} type="text" className="form-control" name="price" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputPassword1">Upload a image</label>
