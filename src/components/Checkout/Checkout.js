@@ -32,6 +32,7 @@ const Checkout = () => {
     })
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         if (data) {
           alert('Your order successfully submited')
         }
@@ -41,14 +42,6 @@ const Checkout = () => {
       });
 
   }
-//   useEffect(() => {
-//     fetch('https://hidden-thicket-93837.herokuapp.com/order')
-//         .then(res => res.json())
-//         .then(data => {
-//             // console.log(data);
-//         setOrderData(data)
-//         })
-// }, [])
   return (
     <div className='container p-5 '>
       <h2 className='py-5' >Cart</h2>
@@ -71,7 +64,7 @@ const Checkout = () => {
 
         </tbody>
       </table>
-      <button onClick={handleSendDatabase}>Send Database</button>
+      <button className='btn btn-success' onClick={handleSendDatabase}>Send Database</button>
      
     </div>
   );

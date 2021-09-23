@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { UserContext } from '../../App';
 import { Link } from 'react-router-dom';
+import logo from '../../img/ass-11-logo.png'
 import './Header.css'
 
 const Header = () => {
@@ -10,7 +11,9 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+                    <Navbar.Brand href="/" >
+                        <img style={{width:'80px', height:'60px'}} src={logo} alt="logo" />
+                        </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">

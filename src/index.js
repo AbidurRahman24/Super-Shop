@@ -12,9 +12,9 @@ ReactDOM.render(
      <Loader
         type="Puff"
         color="#00BFFF"
-        height={100}
-        width={100}
-        timeout={3000} //3 secs
+        height={50}
+        width={50}
+        timeout={500} //
       /> 
     <App />
   </React.StrictMode>,

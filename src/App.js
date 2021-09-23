@@ -10,7 +10,7 @@ import Login from './components/Login/Login';
 import { createContext, useState } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Checkout from './components/Checkout/Checkout';
-import ManageProduct from './components/Order/ManageProduct/ManageProduct';
+import ManageProduct from './components/Admin/ManageProduct/ManageProduct'
 import AddProduct from './components/Admin/ManageProduct/AddProduct/AddProduct';
 
 export const UserContext = createContext();

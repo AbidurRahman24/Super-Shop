@@ -6,18 +6,32 @@ const ManageInventory = ({ manage, handleDelete }) => {
     const {_id}= manage
     return (
         <div>
-            <table class="table table-striped ">
-                
-                <tbody>
+             <table className="table table-borderless">
+            <thead>
+                <tr>
+                <th className="text-secondary text-left" scope="col">Sr No</th>
+                <th className="text-secondary" scope="col">Name</th>
+                <th className="text-secondary" scope="col">Wight</th>
+                <th className="text-secondary" scope="col">Price</th>
+                <th className="text-secondary" scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                  manage.map((manage, index) => 
+                        
                     <tr>
-                        <th scope="row">{manage.name }</th>
-                        <td>{manage.wigth}</td>
+                        <td>{index + 1}</td>
+                        <td>{manage.name}</td>
+                        <td>{manage.wight}</td>
                         <td>{manage.price}</td>
-                        <td><button onClick={()=>handleDelete(_id)}>delete</button></td>
+                        <td style={{ cursor: 'pointer' }} className='btn btn-warning' onClick={()=>handleDelete(_id)} >Remove</td>
                     </tr>
-
-                </tbody>
-            </table>
+                    )
+                }
+            </tbody>
+        </table>
+           
         </div>
     );
 };

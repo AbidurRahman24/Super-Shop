@@ -1,26 +1,23 @@
 import React from 'react';
 import './Card.css'
 
-const Card = (props) => {
-    
-    const {_id, name, wigth, price} = props.products
-    
+const Card = ({products, handleClick}) => {
     return (
         <div>
             <div >
                     <div class="card-deck">
                         <div class="card">
-                        <img className="img-fluid mb-3" src={`data:image/png;base64,${props.products.image.img}`} alt=""/>
+                        <img className="img-fluid mb-3" src={`data:image/png;base64,${products.image.img}`} alt=""/>
                             <div class="card-body">
-                                <h5 class="card-title">{name}</h5>
-                                <p class="card-text">{wigth}</p>
+                                <h5 class="card-title">{products.name}</h5>
+                                <p class="card-text">{products.wigth}</p>
                             </div>
                             <div class="card-footer card-footer-gird">
                                 <div >
-                                    <h3 class="card-link">$ {price}</h3>
+                                    <h3 class="card-link">$ {products.price}</h3>
                                 </div>
                                 <div>
-                                <button type="button" class="btn btn-primary" onClick={()=> props.handleClick(_id)}>BUY NOW</button>
+                                <button type="button" class="btn btn-primary" onClick={()=> handleClick(products._id)}>BUY NOW</button>
                                 </div>
                             </div>
                         </div>

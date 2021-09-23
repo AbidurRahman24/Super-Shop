@@ -79,6 +79,7 @@ const AddProduct = () => {
                         <label htmlFor="exampleInputPassword1">Upload a image</label>
                         <input onChange={handleFileChange} type="file" className="form-control" id="exampleInputPassword1"/>
                     </div>
+                    <br />
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
                     </div>

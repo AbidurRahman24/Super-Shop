@@ -79,7 +79,7 @@ const Login = () => {
     }
     return (
         <div className='text-center d-flex justify-content-center align-items-center' style={{height:'100vh'}}>
-            <h1>This is log in page</h1>
+           
             {user.isSignedIn ? <button onClick={handleSignOut} className='btn btn-primary'>Sign Out with Google</button> :
                 <button onClick={handleSignIn} className='btn btn-primary'>Continue with Google</button>
             }
